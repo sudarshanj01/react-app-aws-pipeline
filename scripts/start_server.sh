@@ -14,12 +14,4 @@ fi
 
 # Navigate to the application directory
 cd /var/www/html
-
-# Check if the build directory exists
-if [ -d "build" ]; then
-  # Run the serve command using nohup
-  nohup serve -s build -l 80 > /dev/null 2>&1 &
-else
-  echo "Build directory does not exist. Please ensure your application is built."
-  exit 1
-fi
+sudo serve -s build -l 80
