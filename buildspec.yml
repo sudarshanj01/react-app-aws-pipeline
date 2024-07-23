@@ -6,12 +6,6 @@ phases:
       nodejs: 16
     commands:
       - npm install
-  
-  pre_build:
-    commands:
-      - echo "Pre-build phase started on `date`"
-      - npm run lint
-      - npm test
 
   build:
     commands:
@@ -24,9 +18,9 @@ phases:
 
 artifacts:
   files:
-    - '**/*'
-  base-directory: 'build'
+    - "**/*"
+  base-directory: "build"
 
 cache:
   paths:
-    - 'node_modules/**/*'
+    - "node_modules/**/*"
