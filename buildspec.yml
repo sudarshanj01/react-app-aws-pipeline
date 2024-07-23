@@ -5,16 +5,28 @@ phases:
     runtime-versions:
       nodejs: 16
     commands:
-      - npm install
+      - npm ci
+  
+  pre_build:
+    commands:
+      - echo "Pre-build phase started on `date`"
+      - npm run lint
+      - npm test
+
   build:
     commands:
+      - echo "Build phase started on `date`"
       - npm run build
+
   post_build:
     commands:
-      - echo Build completed on `date`
+      - echo "Build completed on `date`"
+
 artifacts:
   files:
     - '**/*'
-    - 'appspec.yml'
-    - 'scripts/**/*'
-  base-directory: build
+  base-directory: 'build'
+
+cache:
+  paths:
+    - 'node_modules/**/*'
